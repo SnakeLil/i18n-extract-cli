@@ -40,7 +40,7 @@ npm i @lilsnake/i18n-extract-cli -g
 在项目根目录执行下面命令
 
 ```
-it
+i18n-cli
 ```
 
 ## 指令参数
