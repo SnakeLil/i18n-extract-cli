@@ -6,7 +6,7 @@
     "access": "public"
   },
   "bin": {
-    "it": "bin/index.js"
+    "i18n-cli": "bin/index.js"
   },
   "types": "types/index.d.ts",
   "scripts": {
