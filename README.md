@@ -203,25 +203,25 @@ module.exports = {
 1. 跳过转换阶段，仅将中文语言包翻译成其他语言(例如英语、中文繁体等)
 
 ```bash
-it --skip-extract --locales en zh-CHT
+i18n-cli --skip-extract --locales en zh-CHT
 ```
 
 2. 跳过自动翻译阶段，仅进行 i18n 转换，并将提取到的 key-value 提取到中文语言包
 
 ```bash
-it --skip-translate
+i18n-cli --skip-translate
 ```
 
 3. 使用自定义配置进行 i18n 转换
 
 ```bash
-it -c ./i18n.config.js
+i18n-cli -c ./i18n.config.js
 ```
 
 4. 指定需要自动翻译的语言(例如日语)，并指定项目里中文语言包的位置(相对于命令的执行位置)。命令执行时会自动根据中文语言包，将日语翻译出来并存入到`ja.json`文件中
 
 ```bash
-it --localePath ./locales/zh-CN.json  --locales ja
+i18n-cli --localePath ./locales/zh-CN.json  --locales ja
 ```
 
 5. 导入翻译的 excel 表格，并自动生成对应语言包的 json 文件
@@ -230,18 +230,18 @@ excel 的表头格式举例`['字典key', 'zh-CN', 'en-US']`
 
 ```bash
 # 方式1，根据指令参数导入
-it loadExcel --excelPath ./demo.xlsx --localePath ./locales/zh-CN.json
+i18n-cli loadExcel --excelPath ./demo.xlsx --localePath ./locales/zh-CN.json
 # 方式2，根据本地自定义配置导入
-it loadExcel -c ./i18n.config.js
+i18n-cli loadExcel -c ./i18n.config.js
 ```
 
 6. 将翻译结果导出到 excel 表格
 
 ```bash
 # 方式1，根据指令参数
-it --skip-extract --skip-translate --exportExcel --excelPath ./demo.xlsx
+i18n-cli --skip-extract --skip-translate --exportExcel --excelPath ./demo.xlsx
 # 方式2，根据本地配置
-it --skip-extract --skip-translate  -c ./i18n.config.js
+i18n-cli --skip-extract --skip-translate  -c ./i18n.config.js
 ```
 
 ## 转换效果示例
