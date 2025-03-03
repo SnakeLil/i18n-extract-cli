@@ -95,12 +95,10 @@ async function default_1(localePath, locales, oldPrimaryLang, options) {
     const localeFileType = stateManager_1.default.getToolConfig().localeFileType;
     for (const Locale of locales) {
         const { locale: targetLocale, description, path } = Locale;
-        log_1.default.info(`正在翻译${targetLocale}语言包`);
+        log_1.default.info(`正在翻译${targetLocale}语言包${description ? `,${description}` : ''}`);
         const reg = new RegExp(`/[A-Za-z-]+.${localeFileType}`, 'g');
-        const targetPath = path
-            ? localePath.replace(reg, `${path}`)
-            : localePath.replace(reg, `/${targetLocale}.${localeFileType}`);
-        const targetLocalePath = (0, getAbsolutePath_1.getAbsolutePath)(process.cwd(), targetPath);
+        const targetPath = localePath.replace(reg, `/${targetLocale}.${localeFileType}`);
+        const targetLocalePath = (0, getAbsolutePath_1.getAbsolutePath)(process.cwd(), path ? path : targetPath);
         let oldTargetLangPack = {};
         let newTargetLangPack = {};
         if (fs_extra_1.default.existsSync(targetLocalePath)) {

@@ -101,14 +101,10 @@ export default async function (
 
   for (const Locale of locales) {
     const { locale: targetLocale, description, path } = Locale
-    log.info(`正在翻译${targetLocale}语言包`)
-
+    log.info(`正在翻译${targetLocale}语言包${description ? `,${description}` : ''}`)
     const reg = new RegExp(`/[A-Za-z-]+.${localeFileType}`, 'g')
-
-    const targetPath = path
-      ? localePath.replace(reg, `${path}`)
-      : localePath.replace(reg, `/${targetLocale}.${localeFileType}`)
-    const targetLocalePath = getAbsolutePath(process.cwd(), targetPath)
+    const targetPath = localePath.replace(reg, `/${targetLocale}.${localeFileType}`)
+    const targetLocalePath = getAbsolutePath(process.cwd(), path ? path : targetPath)
     let oldTargetLangPack: Record<string, string> = {}
     let newTargetLangPack: Record<string, string> = {}
     if (fs.existsSync(targetLocalePath)) {
