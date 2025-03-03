@@ -32,7 +32,7 @@
 ## 安装
 
 ```
-npm i @ifreeovo/i18n-extract-cli -g
+npm i @lilsnake/i18n-extract-cli -g
 ```
 
 ## 使用
@@ -55,7 +55,7 @@ it
 | -h,--help         | Boolean | false                  | 查看指令用法                                                                           |
 | --skip-extract    | Boolean | false                  | 跳过 i18n 转换阶段。                                                                   |
 | --skip-translate  | Boolean | false                  | 跳过中文翻译阶段。                                                                     |
-| --locales         | Array   | ['en-US']              | 根据中文语言包自动翻译成其他语言。用法例子 --locales en zh-CHT                         |
+| --locales         | Array   | [{locale: 'en-US', path: 'i18n/en/translation.json'}]  | 根据中文语言包自动翻译成其他语言。配置其他语言文件路径       |
 | --exportExcel     | Boolean | false                  | 开启后。导出所有翻译内容到 excel。 默认导出到当前目录下的 locales.xlsx                 |
 | --excelPath       | String  | './locales.xlsx'       | 指定导出的 excel 路径。                                                                |
 
@@ -176,12 +176,12 @@ module.exports = {
   prettier: {
     semi: false,
     singleQuote: true,
-  },
+  }, // 可以时配置对象，也可以是路径，会自动读取prettier配置文件
   incremental: true, // 开启后。支持将文件中新提取到中文键值对，追加到原有的中文语言包
   skipExtract: false, // 跳过提取中文阶段
   // 以下是和翻译相关的配置，注意搭配使用
   skipTranslate: true, // 跳过翻译语言包阶段。默认不翻译
-  locales: [], // 需要翻译的语言包。例如['en', 'zh-CHT']，会自动翻译英文和繁体
+  locales: [{locale: 'en-US', path: 'i18n/en/translation.json'}], // 需要翻译的语言包。例如[{locale: 'en-US', path: 'i18n/en/translation.json'}]，会自动翻译英文和繁体
   excelPath: './locales.xlsx', // excel存放路径
   exportExcel: false, // 是否导出excel
   // 参数：
